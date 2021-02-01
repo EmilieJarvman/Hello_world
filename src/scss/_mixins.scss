@@ -1,0 +1,33 @@
+@mixin desktopWidth {
+	@media screen and (min-width: 800px) {
+		@content;
+	}
+}
+
+@mixin tabletWidth {
+	@media screen and (min-width: 640px) {
+		@content;
+	}
+}
+
+@mixin minimumWidth {
+	@media screen and (max-width: 320px) {
+		@content;
+	}
+}
+
+@mixin contentBox {
+	background-color: white;
+	color: $darkGrey;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 40px;
+	margin-top: 10px;
+	font-family: $cursive;
+
+	@include desktopWidth {
+		width: 100%;
+		max-width: 1200px;
+		margin: auto;
+	}
+}

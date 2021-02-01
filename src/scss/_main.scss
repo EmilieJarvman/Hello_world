@@ -1,0 +1,303 @@
+// --- camelCase and BEM --- //
+
+// ------------------------------------------- Variables ---------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+$darkGrey: #262626;
+$cursive: "Yellowtail", cursive;
+$mainFont: "Oswald", sans-serif;
+
+// --------------------------------------------- Global ----------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+html {
+	min-height: 100vh;
+	font-size: 5vw;
+	color: $darkGrey;
+	// --- scroll-behavior: smooth; funkar inte i Safari och Firefox. Jag hittar inga prefix. Väljer att ha med iaf då funktionen "back to top" funkar oavsett smooth --- //
+	scroll-behavior: smooth;
+
+	@include desktopWidth {
+		font-size: 24px;
+	}
+
+	@include minimumWidth {
+		font-size: 16px;
+	}
+}
+
+body {
+	background-color: gainsboro;
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: $mainFont;
+}
+
+// -------------------------------------------- Header -----------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+.globalHeader {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+
+	// --- Height och width är uträknat efter min minsta skärm 320px och min minsta fontstorlek 16px. Jag vill att min logga är 150px bred på en 320px skärm (rem blir då 150/16= 9.375rem) --- //
+	figure {
+		height: 10.652rem;
+		width: 9.375rem;
+		margin-top: 1.25rem;
+		position: relative;
+	}
+}
+
+.globalHeader__title {
+	font-family: $cursive;
+	font-size: 2rem;
+	margin-top: 10px;
+}
+
+.globalHeader__image {
+	width: 100%;
+	height: auto;
+}
+
+// -------------------------------------------- Logo Animation ---------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+.globalHeader__animatedImage {
+	position: absolute;
+	width: 100%;
+	display: block;
+	height: auto;
+	animation-name: slideDown;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes slideDown {
+	0% {
+		top: -150%;
+	}
+
+	50% {
+		top: 10%;
+	}
+
+	75% {
+		top: -5%;
+	}
+
+	100% {
+		top: 0%;
+	}
+}
+
+// --------------------------------------------- Menu Navigation -------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+.mainMenu {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+	text-align: center;
+
+	@include desktopWidth {
+		max-width: 800px;
+		flex-direction: row;
+		justify-content: space-around;
+		margin: 14px auto;
+		background-color: white;
+	}
+}
+
+.mainMenu__item {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: $darkGrey;
+	font-size: 1rem;
+	background-color: white;
+	margin: 4px 0;
+	padding: 4px;
+
+	@include desktopWidth {
+		&:hover {
+			text-decoration: underline $darkGrey;
+		}
+	}
+
+	&--current {
+		@include desktopWidth {
+			color: black;
+			border: black solid 1px;
+			border-radius: 2px;
+		}
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&--iconOnly {
+		color: $darkGrey;
+		background-color: transparent;
+		font-size: 2rem;
+
+		//--- Texten i span döljs visuellt då den bara är till för skärmläsare ---//
+		span {
+			display: none;
+		}
+
+		@include desktopWidth {
+			display: none;
+		}
+	}
+
+	&--hiddenMobile {
+		display: none;
+
+		@include desktopWidth {
+			display: block;
+		}
+	}
+}
+
+// ---------------------------------------------- Contentbox -----------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+.mainContent {
+	@include contentBox;
+
+	&--index h1 {
+		font-size: 4rem;
+	}
+}
+
+// -------------------------------------------- Content / About --------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+.resumeContent {
+	font-family: $mainFont;
+	padding: 10px;
+	text-align: left;
+	display: flex;
+	margin: 0 20px;
+
+	@include desktopWidth {
+		max-width: 800px;
+		margin: auto;
+		align-items: center;
+	}
+}
+
+// ------------------------------------------- Sprite Sheet ------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+.logoWrapper {
+	width: 150px;
+	height: 150px;
+	display: none;
+	overflow: hidden;
+	flex-shrink: 0;
+	margin: 20px 20px 20px 0;
+	background-image: url("../../dist/img/spritesheet.svg");
+	background-repeat: no-repeat;
+	background-size: 400% 100%;
+
+	&--gulo {
+		background-position: calc(100% / 3) center;
+	}
+
+	&--mi {
+		background-position: calc((100% / 3) * 2) center;
+	}
+
+	&--griffith {
+		background-position: 100% center;
+	}
+
+	@include desktopWidth {
+		display: block;
+	}
+}
+
+// ----------------------------------- Content / Websites & Illustrations ----------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+.galleryGrid {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	img {
+		padding: 0.8rem;
+		display: block;
+		width: 100%;
+		height: auto;
+		box-sizing: border-box;
+
+		@include tabletWidth {
+			width: 50%;
+		}
+
+		@include desktopWidth {
+			width: calc(100% / 3);
+		}
+	}
+}
+
+// ----------------------------------------- Content / Contact ---------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+address {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-family: $mainFont;
+
+	a {
+		text-decoration: none;
+		color: $darkGrey;
+		padding: 6px;
+	}
+}
+
+.socialMediaIcons {
+	display: flex;
+	justify-content: center;
+
+	a {
+		margin: 1.2rem;
+		display: block;
+		width: 2.2rem;
+	}
+}
+
+// ---------------------------------------- Back to top button ---------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+.backToTop {
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.backToTop__link {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 1rem;
+	line-height: 1rem;
+	text-align: center;
+	background-color: white;
+	padding: 0.25rem;
+	border-radius: 10px;
+	border: gray solid 1px;
+	font-family: $mainFont;
+	color: $darkGrey;
+	margin: 20px 0;
+}

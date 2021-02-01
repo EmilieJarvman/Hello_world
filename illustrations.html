@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Emilie Portfolio</title>
-		<meta name="description" content="Portfolio Website" />
+		<meta name="description" content="Portfolio Website - Illustrations" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#fafafa" />
 		<meta property="og:title" content="Emilie Järvman Portfolio" />
 		<meta property="og:type" content="website" />
 		<meta property="og:description" content="This portfolio showcases websites and illustrations made by Emilie Järvman" />
-		<meta property="og:url" content="http://jarvman.com/emilie/mi/project/" />
-		<meta property="og:image" content="http://jarvman.com/emilie/mi/project/dist/img/og_meta_img_emilie.svg" />
+		<meta property="og:url" content="http://jarvman.com/emilie/mi/project/illustrations" />
+		<meta property="og:image" content="http://jarvman.com/emilie/mi/project/dist/img/logo.svg" />
 
 		<link rel="apple-touch-icon" href="icon.png" />
 		<link rel="icon" href="favicon.ico" />
@@ -34,8 +34,7 @@
 		<header id="top">
 			<div class="globalHeader">
 				<figure>
-					<a class="globalHeader__animatedImage" href="index.html">
-						<!-- La in width och height för att sidan ska se bra ut även utan css -->
+					<a href="index.html">
 						<img class="globalHeader__image" width="135" height="150" src="dist/img/logo.svg" alt="Illustrated porttrait of Emilie" />
 					</a>
 				</figure>
@@ -45,18 +44,25 @@
 			</div>
 
 			<nav class="mainMenu">
-				<a class="mainMenu__item" href="websites.html">websites</a>
-				<a class="mainMenu__item" href="illustrations.html">illustrations</a>
-				<a class="mainMenu__item" href="about.html">about</a>
-				<a class="mainMenu__item" href="contact.html">contact</a>
+				<!-- För tillgänglighetens skull måste <i> ha en text. Därav min span -->
+				<a class="mainMenu__item mainMenu__item--iconOnly" href="index.html"><i class="fas fa-home"></i><span>Back to start</span></a>
+				<a class="mainMenu__item mainMenu__item--hiddenMobile" href="websites.html">websites</a>
+				<a class="mainMenu__item mainMenu__item--hiddenMobile mainMenu__item--current" href="illustrations.html">illustrations</a>
+				<a class="mainMenu__item mainMenu__item--hiddenMobile" href="about.html">about</a>
+				<a class="mainMenu__item mainMenu__item--hiddenMobile" href="contact.html">contact</a>
 			</nav>
 		</header>
 
-		<main class="mainContent mainContent--index">
-			<h1>Hello!</h1>
-			<section>
-				<h2>Welcome to my portfolio</h2>
-			</section>
+		<main class="mainContent">
+			<h1>Illustrations</h1>
+			<div class="galleryGrid">
+				<img src="dist/img/illustration_1.jpg" alt="Illustration of girl with broom and flowers" />
+				<img src="dist/img/illustration_2.jpg" alt="Illustration of hot air balloons with animals" />
+				<img src="dist/img/illustration_3.jpg" alt="Illustration of three kick ass old ladies" />
+				<img src="dist/img/illustration_4.jpg" alt="Dummy text for illustration" />
+				<img src="dist/img/illustration_5.jpg" alt="Example of illustration" />
+				<img src="dist/img/illustration_6.jpg" alt="Another illustration example" />
+			</div>
 		</main>
 
 		<div class="backToTop">
